@@ -13,9 +13,6 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 
-/**
- * Created by Jirka Helmich on 22.04.16.
- */
 public final class RequestFactory
 {
 	private static final RequestFactory sInstance = new RequestFactory();
@@ -36,7 +33,7 @@ public final class RequestFactory
 
 	public Observable<Response<List<UserEntity>>> getUsers()
 	{
-		return prepareObservable(mRetrofit.create(TypicodeRequest.class).getUsers());
+		return prepareObservable(mRetrofit.create(ApiRequest.class).getUsers());
 	}
 
 

@@ -1,8 +1,5 @@
 package cz.helmisek.evtademo.api;
 
-/**
- * Created by Jirka Helmich on 22.04.16.
- */
 public final class ApiConfig
 {
 

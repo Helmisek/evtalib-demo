@@ -8,10 +8,7 @@ import retrofit2.http.GET;
 import rx.Observable;
 
 
-/**
- * Created by Jirka Helmich on 22.04.16.
- */
-public interface TypicodeRequest
+public interface ApiRequest
 {
 	@GET(ApiConfig.USERS)
 	Observable<Response<List<UserEntity>>> getUsers();

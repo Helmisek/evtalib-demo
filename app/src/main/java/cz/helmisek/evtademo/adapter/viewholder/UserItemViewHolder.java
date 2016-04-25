@@ -8,9 +8,6 @@ import cz.helmisek.evtademo.entity.UserEntity;
 import cz.helmisek.evtalibrary.adapter.viewholder.BaseViewHolder;
 
 
-/**
- * Created by Jirka Helmich on 22.04.16.
- */
 public class UserItemViewHolder extends BaseViewHolder<UserEntity, UserItemBinding>
 {
 

@@ -1,6 +1,7 @@
 package cz.helmisek.evtademo.viewmodel;
 
 import android.support.v7.widget.LinearLayoutManager;
+import android.view.View;
 
 import java.util.List;
 
@@ -18,9 +19,6 @@ import cz.kinst.jakub.viewmodelbinding.ViewModel;
 import retrofit2.Response;
 
 
-/**
- * Created by Jirka Helmich on 22.04.16.
- */
 public class MainActivityViewModel extends ViewModel<ActivityMainBinding>
 {
 	@Override
@@ -41,6 +39,7 @@ public class MainActivityViewModel extends ViewModel<ActivityMainBinding>
 			{
 				EVTASetup.getInstance(createAdapterDataBuilder(listResponse.body()))
 						.with(getBinding().recycler, new LinearLayoutManager(getContext()));
+				getBinding().fab.show();
 			}
 		});
 	}
@@ -55,5 +54,11 @@ public class MainActivityViewModel extends ViewModel<ActivityMainBinding>
 		builder.addViewTypeItemList(ViewType.USER.ordinal(), userEntities);
 
 		return builder;
+	}
+
+
+	public void onFabClick(View v)
+	{
+		EVTASetup.getInstance().getAdapter().create(new UserEntity(0, "Jirka", "jirka", "email"), ViewType.USER.ordinal());
 	}
 }
