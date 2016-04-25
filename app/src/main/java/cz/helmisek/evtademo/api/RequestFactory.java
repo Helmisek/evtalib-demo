@@ -4,6 +4,7 @@ import java.util.List;
 
 import cz.helmisek.evtademo.entity.UserEntity;
 import okhttp3.OkHttpClient;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -33,7 +34,7 @@ public final class RequestFactory
 	}
 
 
-	public Observable<List<UserEntity>> getUsers()
+	public Observable<Response<List<UserEntity>>> getUsers()
 	{
 		return prepareObservable(mRetrofit.create(TypicodeRequest.class).getUsers());
 	}

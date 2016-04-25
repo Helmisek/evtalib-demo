@@ -15,6 +15,7 @@ import cz.helmisek.evtademo.entity.UserEntity;
 import cz.helmisek.evtalibrary.EVTASetup;
 import cz.helmisek.evtalibrary.builder.AdapterDataBuilder;
 import cz.kinst.jakub.viewmodelbinding.ViewModel;
+import retrofit2.Response;
 
 
 /**
@@ -33,12 +34,12 @@ public class MainActivityViewModel extends ViewModel<ActivityMainBinding>
 
 	private void setupRecycler()
 	{
-		RequestFactory.getInstance().getUsers().subscribe(new SimpleSubscriber<List<UserEntity>>()
+		RequestFactory.getInstance().getUsers().subscribe(new SimpleSubscriber<Response<List<UserEntity>>>()
 		{
 			@Override
-			public void onNext(List<UserEntity> userEntities)
+			public void onNext(Response<List<UserEntity>> listResponse)
 			{
-				EVTASetup.getInstance(createAdapterDataBuilder(userEntities))
+				EVTASetup.getInstance(createAdapterDataBuilder(listResponse.body()))
 						.with(getBinding().recycler, new LinearLayoutManager(getContext()));
 			}
 		});
