@@ -3,6 +3,7 @@ package cz.helmisek.evtademo;
 import android.app.Application;
 import android.content.Context;
 
+
 public class EVTADemoApp extends Application
 {
 
@@ -23,6 +24,12 @@ public class EVTADemoApp extends Application
 		public App(Context context)
 		{
 			mContext = context;
+		}
+
+
+		public Context getContext()
+		{
+			return mContext;
 		}
 	}
 

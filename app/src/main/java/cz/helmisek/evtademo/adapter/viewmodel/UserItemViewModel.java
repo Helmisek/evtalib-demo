@@ -11,13 +11,15 @@ import cz.helmisek.evtalibrary.viewmodel.BaseAdapterViewModel;
 /**
  * Created by Jirka Helmich on 22.04.16.
  */
-public class UserItemViewModel extends BaseAdapterViewModel<UserEntity, UserItemBinding>
+public class UserItemViewModel extends BaseAdapterViewModel<UserEntity, UserItemBinding> implements View.OnLongClickListener
 {
-	public UserItemViewModel(UserEntity object, UserItemBinding binding, int position)
+	public UserItemViewModel(UserEntity entity, UserItemBinding binding, int position)
 	{
-		super(object, binding, position);
+		super(entity, binding, position);
 
-		getBinding().userItemTitle.setText(object.getName());
+		getBinding().getRoot().setOnLongClickListener(this);
+
+		getBinding().userItemTitle.setText(entity.getName());
 	}
 
 
@@ -25,5 +27,13 @@ public class UserItemViewModel extends BaseAdapterViewModel<UserEntity, UserItem
 	public void onItemClick(View v)
 	{
 		Log.v("Title", getDataObject().getName());
+	}
+
+
+	@Override
+	public boolean onLongClick(View v)
+	{
+		Log.v("Username", getDataObject().getUsername());
+		return true;
 	}
 }
