@@ -1,14 +1,29 @@
 package cz.helmisek.evtademo;
 
 import android.app.Application;
+import android.content.Context;
 
-
-/**
- * Created by Jirka Helmich on 22.04.16.
- */
 public class EVTADemoApp extends Application
 {
 
+	public EVTADemoApp()
+	{
+		synchronized(this)
+		{
+			new App(this);
+		}
+	}
 
+
+	public static class App
+	{
+		private Context mContext;
+
+
+		public App(Context context)
+		{
+			mContext = context;
+		}
+	}
 
 }
